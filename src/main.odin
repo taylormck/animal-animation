@@ -45,13 +45,14 @@ Worm :: struct {
 
 create_worm :: proc() -> Worm {
     radius: f32 = 15
+    node_separation := 2.2 * radius
 
     worm := Worm {
-        node_separation = 2.2 * radius,
+        node_separation = node_separation,
         speed           = 250,
     }
 
-    left: [2]f32 = {-1, 0}
+    left: [2]f32 = {-1, 0} * node_separation
     center: [2]f32 = {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2}
 
     for &node in worm.nodes {
